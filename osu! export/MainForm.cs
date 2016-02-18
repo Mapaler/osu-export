@@ -34,7 +34,7 @@ namespace osu__export
             var fsd = new FolderSelectDialog();
             //fsd.Title = "What to select";
             //fsd.InitialDirectory = @"c:\";
-            if (fsd.ShowDialog(IntPtr.Zero))
+            if (fsd.ShowDialog(this.Handle))
             {
                 this.txtSongs.Text = fsd.FileName;
             }
@@ -45,7 +45,7 @@ namespace osu__export
             var fsd = new FolderSelectDialog();
             //fsd.Title = "What to select";
             //fsd.InitialDirectory = @"c:\";
-            if (fsd.ShowDialog(IntPtr.Zero))
+            if (fsd.ShowDialog(this.Handle))
             {
                 this.txtExport.Text = fsd.FileName;
             }
@@ -99,6 +99,8 @@ namespace osu__export
 
             int di =0;
             this.pgsBrate.Maximum = dirInfo.Length; //进度条总数
+            string lblRateTxt;
+            lblRateTxt = lblRate.Text;
             //遍历文件夹
             foreach (DirectoryInfo NextFolder in dirInfo)
             {
@@ -116,6 +118,7 @@ namespace osu__export
 
                 this.txtLog.AppendText("正在处理：" + di + "/" + dirInfo.Length + " - " + NextFolder.Name + "\r\n");
 
+                lblRate.Text = lblRateTxt + " " + di + "/" + dirInfo.Length;
                 FileInfo[] fileInfo = NextFolder.GetFiles();
                 foreach (FileInfo NextFile in fileInfo)  //遍历文件
                 {
@@ -325,6 +328,7 @@ namespace osu__export
                 }
             }
             this.txtLog.AppendText("执行完成\r\n");
+            lblRate.Text = lblRateTxt;
         }
         //按宽度比例缩小图片
         public static Image ChangeImageSize(Image imgSource, int MAX_WIDTH, int MAX_HEIGHT, int ResizeType)
@@ -417,15 +421,11 @@ namespace osu__export
         {
             if (this.chkResize.Checked)
             {
-                this.txtMaxWidth.Enabled = true;
-                this.txtMaxHeight.Enabled = true;
-                this.cmbResizeMode.Enabled = true;
+                this.pnlResize.Enabled = true;
             }
             else
             {
-                this.txtMaxWidth.Enabled = false;
-                this.txtMaxHeight.Enabled = false;
-                this.cmbResizeMode.Enabled = false;
+                this.pnlResize.Enabled = false;
             }
         }
 
@@ -438,11 +438,11 @@ namespace osu__export
         {
             if (this.chkSkipShort.Checked)
             {
-                this.txtTimeLimit.Enabled = true;
+                this.pnlSkipShort.Enabled = true;
             }
             else
             {
-                this.txtTimeLimit.Enabled = false;
+                this.pnlSkipShort.Enabled = false;
             }
         }
 
@@ -450,11 +450,11 @@ namespace osu__export
         {
             if (this.chkConvertToMp3.Checked)
             {
-                this.trkVBRQuality.Enabled = true;
+                this.pnlVBRQuality.Enabled = true;
             }
             else
             {
-                this.trkVBRQuality.Enabled = false;
+                this.pnlVBRQuality.Enabled = false;
             }
         }
 
@@ -468,6 +468,20 @@ namespace osu__export
             else
             {
                 this.chkRewriteImg.Enabled = false;
+                this.grpImage.Enabled = false;
+            }
+        }
+
+        private void chkID3v2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.chkID3v2.Checked)
+            {
+                this.pnlID3v2.Enabled = true;
+                this.grpImage.Enabled = this.chkCoverImg.Checked;
+            }
+            else
+            {
+                this.pnlID3v2.Enabled = false;
                 this.grpImage.Enabled = false;
             }
         }
