@@ -34,23 +34,26 @@
             this.btmBrowserExport = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.grpMusic = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.trkVBRQuality = new System.Windows.Forms.TrackBar();
+            this.pnlSkipShort = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTimeLimit = new System.Windows.Forms.TextBox();
+            this.pnlVBRQuality = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.trkVBRQuality = new System.Windows.Forms.TrackBar();
             this.chkSkipShort = new System.Windows.Forms.CheckBox();
             this.chkConvertToMp3 = new System.Windows.Forms.CheckBox();
             this.grpImage = new System.Windows.Forms.GroupBox();
+            this.pnlResize = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.cmbResizeMode = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.txtMaxWidth = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtMaxHeight = new System.Windows.Forms.TextBox();
-            this.txtMaxWidth = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.chkResize = new System.Windows.Forms.CheckBox();
             this.chkCovertToJpg = new System.Windows.Forms.CheckBox();
             this.pgsBrate = new System.Windows.Forms.ProgressBar();
@@ -60,10 +63,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblRate = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pnlID3v2 = new System.Windows.Forms.Panel();
             this.cmbID3Mode = new System.Windows.Forms.ComboBox();
             this.chkRewriteImg = new System.Windows.Forms.CheckBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.chkCoverImg = new System.Windows.Forms.CheckBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.chkID3v2 = new System.Windows.Forms.CheckBox();
             this.chkID3v1 = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -76,20 +80,17 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkSkipExsist = new System.Windows.Forms.CheckBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.pnlResize = new System.Windows.Forms.Panel();
-            this.pnlID3v2 = new System.Windows.Forms.Panel();
-            this.pnlVBRQuality = new System.Windows.Forms.Panel();
-            this.pnlSkipShort = new System.Windows.Forms.Panel();
+            this.chkCut = new System.Windows.Forms.CheckBox();
             this.grpMusic.SuspendLayout();
+            this.pnlSkipShort.SuspendLayout();
+            this.pnlVBRQuality.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkVBRQuality)).BeginInit();
             this.grpImage.SuspendLayout();
+            this.pnlResize.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.pnlID3v2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.pnlResize.SuspendLayout();
-            this.pnlID3v2.SuspendLayout();
-            this.pnlVBRQuality.SuspendLayout();
-            this.pnlSkipShort.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBrowserOsu
@@ -135,6 +136,56 @@
             this.grpMusic.TabStop = false;
             this.grpMusic.Text = "音频处理选项";
             // 
+            // pnlSkipShort
+            // 
+            this.pnlSkipShort.BackColor = System.Drawing.Color.Transparent;
+            this.pnlSkipShort.Controls.Add(this.label4);
+            this.pnlSkipShort.Controls.Add(this.txtTimeLimit);
+            this.pnlSkipShort.Enabled = false;
+            this.pnlSkipShort.Location = new System.Drawing.Point(30, 110);
+            this.pnlSkipShort.Name = "pnlSkipShort";
+            this.pnlSkipShort.Size = new System.Drawing.Size(78, 29);
+            this.pnlSkipShort.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(57, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "秒";
+            // 
+            // txtTimeLimit
+            // 
+            this.txtTimeLimit.Location = new System.Drawing.Point(2, 2);
+            this.txtTimeLimit.Name = "txtTimeLimit";
+            this.txtTimeLimit.Size = new System.Drawing.Size(49, 21);
+            this.txtTimeLimit.TabIndex = 17;
+            this.txtTimeLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimeLimit_KeyPress);
+            // 
+            // pnlVBRQuality
+            // 
+            this.pnlVBRQuality.BackColor = System.Drawing.Color.Transparent;
+            this.pnlVBRQuality.Controls.Add(this.label12);
+            this.pnlVBRQuality.Controls.Add(this.label13);
+            this.pnlVBRQuality.Controls.Add(this.label11);
+            this.pnlVBRQuality.Controls.Add(this.trkVBRQuality);
+            this.pnlVBRQuality.Location = new System.Drawing.Point(30, 34);
+            this.pnlVBRQuality.Name = "pnlVBRQuality";
+            this.pnlVBRQuality.Size = new System.Drawing.Size(138, 52);
+            this.pnlVBRQuality.TabIndex = 13;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Location = new System.Drawing.Point(38, 35);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(29, 12);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "最好";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -155,16 +206,6 @@
             this.label11.TabIndex = 5;
             this.label11.Text = "VBR质量";
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Location = new System.Drawing.Point(38, 35);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(29, 12);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "最好";
-            // 
             // trkVBRQuality
             // 
             this.trkVBRQuality.Location = new System.Drawing.Point(39, 3);
@@ -173,23 +214,6 @@
             this.trkVBRQuality.TabIndex = 14;
             this.trkVBRQuality.Value = 2;
             this.trkVBRQuality.Scroll += new System.EventHandler(this.trkVBRQuality_Scroll);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(57, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "秒";
-            // 
-            // txtTimeLimit
-            // 
-            this.txtTimeLimit.Location = new System.Drawing.Point(2, 2);
-            this.txtTimeLimit.Name = "txtTimeLimit";
-            this.txtTimeLimit.Size = new System.Drawing.Size(49, 21);
-            this.txtTimeLimit.TabIndex = 17;
-            this.txtTimeLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTimeLimit_KeyPress);
             // 
             // chkSkipShort
             // 
@@ -223,10 +247,28 @@
             this.grpImage.Controls.Add(this.chkCovertToJpg);
             this.grpImage.Location = new System.Drawing.Point(183, 277);
             this.grpImage.Name = "grpImage";
-            this.grpImage.Size = new System.Drawing.Size(168, 152);
+            this.grpImage.Size = new System.Drawing.Size(168, 174);
             this.grpImage.TabIndex = 26;
             this.grpImage.TabStop = false;
             this.grpImage.Text = "图片处理选项";
+            // 
+            // pnlResize
+            // 
+            this.pnlResize.BackColor = System.Drawing.Color.Transparent;
+            this.pnlResize.Controls.Add(this.chkCut);
+            this.pnlResize.Controls.Add(this.label9);
+            this.pnlResize.Controls.Add(this.label5);
+            this.pnlResize.Controls.Add(this.cmbResizeMode);
+            this.pnlResize.Controls.Add(this.label6);
+            this.pnlResize.Controls.Add(this.label8);
+            this.pnlResize.Controls.Add(this.txtMaxWidth);
+            this.pnlResize.Controls.Add(this.label7);
+            this.pnlResize.Controls.Add(this.txtMaxHeight);
+            this.pnlResize.Enabled = false;
+            this.pnlResize.Location = new System.Drawing.Point(29, 64);
+            this.pnlResize.Name = "pnlResize";
+            this.pnlResize.Size = new System.Drawing.Size(133, 104);
+            this.pnlResize.TabIndex = 29;
             // 
             // label9
             // 
@@ -236,6 +278,15 @@
             this.label9.Size = new System.Drawing.Size(53, 12);
             this.label9.TabIndex = 9;
             this.label9.Text = "缩放模式";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(-2, 4);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 12);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "宽";
             // 
             // cmbResizeMode
             // 
@@ -249,6 +300,16 @@
             this.cmbResizeMode.Name = "cmbResizeMode";
             this.cmbResizeMode.Size = new System.Drawing.Size(66, 20);
             this.cmbResizeMode.TabIndex = 32;
+            this.cmbResizeMode.SelectedIndexChanged += new System.EventHandler(this.cmbResizeMode_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(-2, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(17, 12);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "高";
             // 
             // label8
             // 
@@ -258,6 +319,14 @@
             this.label8.Size = new System.Drawing.Size(29, 12);
             this.label8.TabIndex = 7;
             this.label8.Text = "像素";
+            // 
+            // txtMaxWidth
+            // 
+            this.txtMaxWidth.Location = new System.Drawing.Point(21, 1);
+            this.txtMaxWidth.Name = "txtMaxWidth";
+            this.txtMaxWidth.Size = new System.Drawing.Size(49, 21);
+            this.txtMaxWidth.TabIndex = 30;
+            this.txtMaxWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaxWidth_KeyPress);
             // 
             // label7
             // 
@@ -275,32 +344,6 @@
             this.txtMaxHeight.Size = new System.Drawing.Size(49, 21);
             this.txtMaxHeight.TabIndex = 31;
             this.txtMaxHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaxHeight_KeyPress);
-            // 
-            // txtMaxWidth
-            // 
-            this.txtMaxWidth.Location = new System.Drawing.Point(21, 1);
-            this.txtMaxWidth.Name = "txtMaxWidth";
-            this.txtMaxWidth.Size = new System.Drawing.Size(49, 21);
-            this.txtMaxWidth.TabIndex = 30;
-            this.txtMaxWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaxWidth_KeyPress);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(-2, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 12);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "高";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(-2, 4);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 12);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "宽";
             // 
             // chkResize
             // 
@@ -385,6 +428,18 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "mp3 ID3选项";
             // 
+            // pnlID3v2
+            // 
+            this.pnlID3v2.BackColor = System.Drawing.Color.Transparent;
+            this.pnlID3v2.Controls.Add(this.cmbID3Mode);
+            this.pnlID3v2.Controls.Add(this.chkRewriteImg);
+            this.pnlID3v2.Controls.Add(this.chkCoverImg);
+            this.pnlID3v2.Controls.Add(this.checkBox11);
+            this.pnlID3v2.Location = new System.Drawing.Point(6, 62);
+            this.pnlID3v2.Name = "pnlID3v2";
+            this.pnlID3v2.Size = new System.Drawing.Size(162, 105);
+            this.pnlID3v2.TabIndex = 21;
+            // 
             // cmbID3Mode
             // 
             this.cmbID3Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -410,17 +465,6 @@
             this.chkRewriteImg.Text = "覆盖已存在图片";
             this.chkRewriteImg.UseVisualStyleBackColor = true;
             // 
-            // checkBox11
-            // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(0, 70);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(108, 28);
-            this.checkBox11.TabIndex = 25;
-            this.checkBox11.Text = "判断已存在数据\r\n是否为日文乱码";
-            this.checkBox11.UseVisualStyleBackColor = true;
-            this.checkBox11.Visible = false;
-            // 
             // chkCoverImg
             // 
             this.chkCoverImg.AutoSize = true;
@@ -434,6 +478,17 @@
             this.chkCoverImg.UseVisualStyleBackColor = true;
             this.chkCoverImg.CheckedChanged += new System.EventHandler(this.chkCoverImg_CheckedChanged);
             // 
+            // checkBox11
+            // 
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Location = new System.Drawing.Point(0, 70);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(108, 28);
+            this.checkBox11.TabIndex = 25;
+            this.checkBox11.Text = "判断已存在数据\r\n是否为日文乱码";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            this.checkBox11.Visible = false;
+            // 
             // chkID3v2
             // 
             this.chkID3v2.AutoSize = true;
@@ -441,9 +496,9 @@
             this.chkID3v2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkID3v2.Location = new System.Drawing.Point(6, 40);
             this.chkID3v2.Name = "chkID3v2";
-            this.chkID3v2.Size = new System.Drawing.Size(90, 16);
+            this.chkID3v2.Size = new System.Drawing.Size(78, 16);
             this.chkID3v2.TabIndex = 20;
-            this.chkID3v2.Text = "加入ID3v2.3";
+            this.chkID3v2.Text = "加入ID3v2";
             this.chkID3v2.UseVisualStyleBackColor = true;
             this.chkID3v2.CheckedChanged += new System.EventHandler(this.chkID3v2_CheckedChanged);
             // 
@@ -559,63 +614,21 @@
             this.chkSkipExsist.Text = "跳过已导出音乐";
             this.chkSkipExsist.UseVisualStyleBackColor = true;
             // 
-            // pnlResize
+            // chkCut
             // 
-            this.pnlResize.BackColor = System.Drawing.Color.Transparent;
-            this.pnlResize.Controls.Add(this.label9);
-            this.pnlResize.Controls.Add(this.label5);
-            this.pnlResize.Controls.Add(this.cmbResizeMode);
-            this.pnlResize.Controls.Add(this.label6);
-            this.pnlResize.Controls.Add(this.label8);
-            this.pnlResize.Controls.Add(this.txtMaxWidth);
-            this.pnlResize.Controls.Add(this.label7);
-            this.pnlResize.Controls.Add(this.txtMaxHeight);
-            this.pnlResize.Enabled = false;
-            this.pnlResize.Location = new System.Drawing.Point(29, 64);
-            this.pnlResize.Name = "pnlResize";
-            this.pnlResize.Size = new System.Drawing.Size(133, 70);
-            this.pnlResize.TabIndex = 29;
-            // 
-            // pnlID3v2
-            // 
-            this.pnlID3v2.BackColor = System.Drawing.Color.Transparent;
-            this.pnlID3v2.Controls.Add(this.cmbID3Mode);
-            this.pnlID3v2.Controls.Add(this.chkRewriteImg);
-            this.pnlID3v2.Controls.Add(this.chkCoverImg);
-            this.pnlID3v2.Controls.Add(this.checkBox11);
-            this.pnlID3v2.Location = new System.Drawing.Point(6, 62);
-            this.pnlID3v2.Name = "pnlID3v2";
-            this.pnlID3v2.Size = new System.Drawing.Size(162, 105);
-            this.pnlID3v2.TabIndex = 21;
-            // 
-            // pnlVBRQuality
-            // 
-            this.pnlVBRQuality.BackColor = System.Drawing.Color.Transparent;
-            this.pnlVBRQuality.Controls.Add(this.label12);
-            this.pnlVBRQuality.Controls.Add(this.label13);
-            this.pnlVBRQuality.Controls.Add(this.label11);
-            this.pnlVBRQuality.Controls.Add(this.trkVBRQuality);
-            this.pnlVBRQuality.Location = new System.Drawing.Point(30, 34);
-            this.pnlVBRQuality.Name = "pnlVBRQuality";
-            this.pnlVBRQuality.Size = new System.Drawing.Size(138, 52);
-            this.pnlVBRQuality.TabIndex = 13;
-            // 
-            // pnlSkipShort
-            // 
-            this.pnlSkipShort.BackColor = System.Drawing.Color.Transparent;
-            this.pnlSkipShort.Controls.Add(this.label4);
-            this.pnlSkipShort.Controls.Add(this.txtTimeLimit);
-            this.pnlSkipShort.Enabled = false;
-            this.pnlSkipShort.Location = new System.Drawing.Point(30, 110);
-            this.pnlSkipShort.Name = "pnlSkipShort";
-            this.pnlSkipShort.Size = new System.Drawing.Size(78, 29);
-            this.pnlSkipShort.TabIndex = 16;
+            this.chkCut.AutoSize = true;
+            this.chkCut.Location = new System.Drawing.Point(0, 72);
+            this.chkCut.Name = "chkCut";
+            this.chkCut.Size = new System.Drawing.Size(48, 16);
+            this.chkCut.TabIndex = 33;
+            this.chkCut.Text = "裁剪";
+            this.chkCut.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 435);
+            this.ClientSize = new System.Drawing.Size(762, 457);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtLog);
@@ -640,23 +653,23 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.grpMusic.ResumeLayout(false);
             this.grpMusic.PerformLayout();
+            this.pnlSkipShort.ResumeLayout(false);
+            this.pnlSkipShort.PerformLayout();
+            this.pnlVBRQuality.ResumeLayout(false);
+            this.pnlVBRQuality.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkVBRQuality)).EndInit();
             this.grpImage.ResumeLayout(false);
             this.grpImage.PerformLayout();
+            this.pnlResize.ResumeLayout(false);
+            this.pnlResize.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.pnlID3v2.ResumeLayout(false);
+            this.pnlID3v2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.pnlResize.ResumeLayout(false);
-            this.pnlResize.PerformLayout();
-            this.pnlID3v2.ResumeLayout(false);
-            this.pnlID3v2.PerformLayout();
-            this.pnlVBRQuality.ResumeLayout(false);
-            this.pnlVBRQuality.PerformLayout();
-            this.pnlSkipShort.ResumeLayout(false);
-            this.pnlSkipShort.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -714,6 +727,7 @@
         private System.Windows.Forms.Panel pnlID3v2;
         private System.Windows.Forms.Panel pnlVBRQuality;
         private System.Windows.Forms.Panel pnlSkipShort;
+        private System.Windows.Forms.CheckBox chkCut;
     }
 }
 

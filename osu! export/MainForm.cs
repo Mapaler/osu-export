@@ -53,6 +53,11 @@ namespace osu__export
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+#if DEBUG
+            this.txtSongs.Text = @"D:\CTFX\Documents\Visual Studio 2015\Projects\osu! export\export\";
+            this.txtExport.Text = @"D:\CTFX\Documents\Visual Studio 2015\Projects\osu! export\export\debug";
+#else
+
             //读注册表
             RegistryKey hkcr = Registry.ClassesRoot;
 
@@ -72,13 +77,14 @@ namespace osu__export
             Regex reg = new Regex("^\"([^\"]+\\\\)osu!\\.exe\".+");
             Match match = reg.Match(registData);
             string value = match.Groups[1].Value;
-
-            this.Text += " v" + Application.ProductVersion.ToString();
             this.txtSongs.Text = value + "Songs\\";
-            //this.txtSongs.Text = @"D:\CTFX\Documents\Visual Studio 2015\Projects\osu! export\export\";
-#if DEBUG
-            this.txtExport.Text = @"D:\CTFX\Documents\Visual Studio 2015\Projects\osu! export\export\debug";
 #endif
+            this.Text += " v" + 
+                Application.ProductVersion[0].ToString() + 
+                Application.ProductVersion[1].ToString() +
+                Application.ProductVersion[2].ToString() +
+                Application.ProductVersion[3].ToString() +
+                Application.ProductVersion[4].ToString();
             this.cmbResizeMode.SelectedIndex = 0;
             this.cmbID3Mode.SelectedIndex = 1;
         }
@@ -195,7 +201,6 @@ namespace osu__export
                         Match matchSource = regSource.Match(mapTxt);
                         string valueSource = matchSource.Groups[1].Value;
 
-
                         //开始读取TAG
                         //替换ID3v1
                         if (this.chkID3v1.Checked)
@@ -230,7 +235,8 @@ namespace osu__export
                             IID3v2Tag _id3v2;
                             _id3v2 = new ID3v2Tag(srcMusic.FullName);
                             //文本
-                            _id3v2.Header.TagVersion = ID3v2TagVersion.ID3v23;
+                            if (_id3v2.Header.TagVersion< ID3v2TagVersion.ID3v23)
+                                _id3v2.Header.TagVersion = ID3v2TagVersion.ID3v23;
                             if (this.cmbID3Mode.SelectedIndex == 0 || //全覆盖
                                 _id3v2.Title == null || //数据为空时
                                 (this.cmbID3Mode.SelectedIndex == 1 && (Regex.Replace(_id3v2.Title, "[\\x01-\\xFF]", "").Length < 1 || (valueTitleUnicode.Length > 1 && this.chkUnicode.Checked))) || //覆盖非英文
@@ -249,7 +255,6 @@ namespace osu__export
                                 (this.cmbID3Mode.SelectedIndex == 2 && Regex.Replace(_id3v2.Album, "\\s", "").Length < 1)//不覆盖
                                 )
                                 _id3v2.Album = valueSource;
-
                             //添加图片
                             if (this.chkCoverImg.Checked && srcBgPic.Exists)
                             {
@@ -289,7 +294,6 @@ namespace osu__export
                                     attachedPicture.Picture = image;
                                 }
                             }
-
                             _id3v2.Save(trgMusic.FullName);
                         }
 
@@ -483,6 +487,18 @@ namespace osu__export
             {
                 this.pnlID3v2.Enabled = false;
                 this.grpImage.Enabled = false;
+            }
+        }
+
+        private void cmbResizeMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmbResizeMode.SelectedIndex == 0)
+            {
+                this.chkCut.Enabled = true;
+            }
+            else
+            {
+                this.chkCut.Enabled = false;
             }
         }
     }
